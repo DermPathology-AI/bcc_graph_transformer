@@ -1,0 +1,19 @@
+python src/tile_WSI.py -s 512 -e 0 -j 256 -B 50 -M 20 -o "/workspace/data/cv_methods/tmi2022/WSI" "/workspace/data/bcc-projekt-digital/bcc/*/*.ndpi"
+
+python src/tile_WSI.py -s 512 -e 0 -j 32 -B 50 -M 20 -o "/workspace/data/cv_methods/tmi2022/WSI" "/workspace/data/bcc-projekt-digital/bcc/0/*BCC461 (3)_0.ndpi"
+
+python run.py
+
+python build_graphs.py --weights  /workspace/data/cv_methods/tmi2022/feature_extractor/runs/Aug30_02-29-45_bcc-0-0/checkpoints/model.pth --dataset "/workspace/data/cv_methods/tmi2022/WSI/" --output "../graphs" --num_classes 5
+
+python build_graphs.py --weights  /workspace/data/cv_methods/tmi2022/feature_extractor/runs/Aug20_05-19-53_bcc-0-0/checkpoints/model.pth --dataset "/workspace/data/cv_methods/dsmil-wsi/WSI/bcc/pyramid/*/*/*.jpeg" --output "../graphs" --num_classes 5
+
+python build_graphs_double.py --weights  '/workspace/data/cv_methods/tmi2022/feature_extractor/runs/Jun12_20-41-55_bcc-0-0/checkpoints/model.pth' --dataset '/workspace/data/cv_methods/dsmil-wsi/WSI/bcc/pyramid/*/*.jpeg' --output "../graphs" --num_classes 5
+
+bash scripts/train.sh
+
+bash scripts/train_double.sh
+
+bash scripts/get_graphcam.sh   # doesnot work on parallel 
+
+bash scripts/vis_graphcam.sh   # rename the file name

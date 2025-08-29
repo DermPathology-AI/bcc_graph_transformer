@@ -1,0 +1,1 @@
+bash scripts/test_cv.sh
