@@ -4,9 +4,7 @@
 # Copyright (c) 2020
 ###########################################################################
 
-import os
 import argparse
-import torch
 
 class Options():
     def __init__(self):

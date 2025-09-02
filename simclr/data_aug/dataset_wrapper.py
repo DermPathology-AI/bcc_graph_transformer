@@ -3,10 +3,8 @@ from torch.utils.data import DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as transforms
 from data_aug.gaussian_blur import GaussianBlur
-from torchvision import datasets
 import pandas as pd
 from PIL import Image
-from skimage import io, img_as_ubyte
 
 np.random.seed(0)
 

@@ -1,7 +1,8 @@
 from simclr import SimCLR
 import yaml
 from data_aug.dataset_wrapper import DataSetWrapper
-import os, glob
+import os
+import glob
 import pandas as pd
 import argparse
 import torch

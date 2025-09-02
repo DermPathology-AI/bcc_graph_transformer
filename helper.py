@@ -3,16 +3,8 @@
 
 from __future__ import absolute_import, division, print_function
 
-import cv2
-import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torch.autograd import Variable
-from torchvision import transforms
 from utils.metrics import ConfusionMatrix
-from PIL import Image
-import os
 
 # torch.cuda.synchronize()
 # torch.backends.cudnn.benchmark = True

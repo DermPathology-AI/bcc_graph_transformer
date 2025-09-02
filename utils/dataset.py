@@ -2,13 +2,9 @@ import os
 import torch
 import torch.utils.data as data
 import numpy as np
-from PIL import Image, ImageFile
-import random
-from torchvision.transforms import ToTensor
+from PIL import ImageFile
 from torchvision import transforms
-import cv2
 
-import torch.nn.functional as F
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -78,7 +74,7 @@ class GraphDataset(data.Dataset):
         sample['label'] = self.classdict[label]
         sample['id'] = file_name
         
-        feature_path = f'/workspace/data/cv_methods/tmi2022/graphs/{simclr_files_folder}/{file_name}/features.pt'
+        feature_path = f'/workspace/data/cv_methods/gt/graphs/{simclr_files_folder}/{file_name}/features.pt'
 
         if os.path.exists(feature_path):
             features = torch.load(feature_path, map_location=lambda storage, loc: storage)
@@ -86,7 +82,7 @@ class GraphDataset(data.Dataset):
             print(feature_path + ' not exists')
             features = torch.zeros(1, 512)
 
-        adj_s_path = f'/workspace/data/cv_methods/tmi2022/graphs/{simclr_files_folder}/{file_name}/adj_s.pt'
+        adj_s_path = f'/workspace/data/cv_methods/gt/graphs/{simclr_files_folder}/{file_name}/adj_s.pt'
       
         if os.path.exists(adj_s_path):
             adj_s = torch.load(adj_s_path, map_location=lambda storage, loc: storage)
