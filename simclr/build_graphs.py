@@ -106,11 +106,6 @@ def compute_feats(args, bags_list, i_classifier, save_path=None, whole_slide_pat
     Tensor = torch.FloatTensor
     for i in range(0, num_bags):
         feats_list = []
-        # if  args.magnification == '20x':
-        #   csv_file_path = glob.glob(os.path.join(bags_list[i], '*.jpeg'))
-        #  file_name = bags_list[i].split('/')[-2].split('_')[0]
-        # print('Where:', bags_list[i], file_name)
-
         if args.magnification == "20x":
             csv_file_path = glob.glob(os.path.join(bags_list[i], "*.jpeg"))
             file_name = bags_list[i].split("/")[-2]

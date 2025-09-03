@@ -78,9 +78,6 @@ class SimCLR(object):
             model.parameters(), 1e-5, weight_decay=eval(self.config["weight_decay"])
         )
 
-        #       scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(train_loader), eta_min=0,
-        #                                                                last_epoch=-1)
-
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
             optimizer, T_max=self.config["epochs"], eta_min=0, last_epoch=-1
         )
