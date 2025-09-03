@@ -1,22 +1,23 @@
-FROM registry.git.vgregion.se/aiplattform/images/pytorch:latest
+
+FROM pytorch/pytorch:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Stockholm/Europe
 
-RUN apt -y update \
-    && apt install python3 python3-pip git -y \
-    && apt install python-is-python3 -y \
-    && apt-get install -y curl gettext-base \
-    && apt-get install -y  openslide-tools \
-    && apt-get install -y ffmpeg libsm6 libxext6 \
-    && apt-get install -y libgl1-mesa-glx \
-    && addgroup --gid 1000 researcher \
-    && adduser --home /workspace --disabled-password --gecos '' --uid 1000 --gid 1000 researcher
+
+ENV TZ=UTC
+
+
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip git curl gettext-base \
+    openslide-tools ffmpeg libsm6 libxext6 libgl1-mesa-glx \
+    python-is-python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
 
 COPY requirements.txt setup.py ./
-RUN pip install -r requirements.txt
 
-USER researcher
-WORKDIR /workspace
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt
 
 CMD ["dvc", "repro"]

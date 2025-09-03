@@ -54,8 +54,10 @@ You can follow training progress using:
 cd simclr/runs
 tensorboard --logdir path/to/dir --host 0.0.0.0 --port 8080  
 ```
+**Note:**  
+The `simclr/runs` directory contains **two pretrained models** trained on the BCC dataset above.
 
-#### Feature extraction
+## Feature extraction
 
 (1) **Training set**  
 ```bash
@@ -85,7 +87,7 @@ python build_graphs_double.py --weights simclr/runs/high_mag_bcc-0-0/checkpoints
 ```
 
 
-#### Train for single magnification
+## Train for single magnification
 
 See sample anntotation formats in `annotations` directory.  
 
